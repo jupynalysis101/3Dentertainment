@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Entertainment - Premier Sound & Entertainment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b00 100%);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+        }
+
+        .brand-name {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff8c00, #ffd700, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            margin-top: 120px;
+            padding: 80px 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, #2d1b00 0%, #0a0a0a 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 140, 0, 0.03) 2px,
+                rgba(255, 140, 0, 0.03) 4px
+            );
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff8c00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #00ff88;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff8c00, #ff6600);
+            color: #fff;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 140, 0, 0.6);
+        }
+
+        .services {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: #ff8c00;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a, #2d1b00);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff8c00;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .service-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .genres {
+            background: linear-gradient(135deg, #2d1b00, #1a1a1a);
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .genres h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 50px;
+            color: #00ff88;
+        }
+
+        .genre-tags {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .genre-tag {
+            background: linear-gradient(135deg, #ff8c00, #ff6600);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .genre-tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.5);
+        }
+
+        footer {
+            background: #0a0a0a;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid #ff8c00;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #ff8c00;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <div class="logo">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 3D layered circles representing sound waves and depth -->
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff8c00" stroke-width="3" opacity="0.3"/>
+                        <circle cx="100" cy="100" r="70" fill="none" stroke="#ffd700" stroke-width="3" opacity="0.5"/>
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="#00ff88" stroke-width="3" opacity="0.7"/>
+                        
+                        <!-- 3D text effect -->
+                        <text x="100" y="95" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#2d1b00">3D</text>
+                        <text x="98" y="93" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#ff8c00">3D</text>
+                        
+                        <!-- Sound wave bars -->
+                        <rect x="75" y="115" width="8" height="35" fill="#ffd700" rx="4">
+                            <animate attributeName="height" values="35;50;35" dur="1s" repeatCount="indefinite"/>
+                            <animate attributeName="y" values="115;100;115" dur="1s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="93" y="110" width="8" height="45" fill="#ff8c00" rx="4">
+                            <animate attributeName="height" values="45;60;45" dur="0.8s" repeatCount="indefinite"/>
+                            <animate attributeName="y" values="110;95;110" dur="0.8s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="111" y="105" width="8" height="55" fill="#00ff88" rx="4">
+                            <animate attributeName="height" values="55;70;55" dur="1.2s" repeatCount="indefinite"/>
+                            <animate attributeName="y" values="105;90;105" dur="1.2s" repeatCount="indefinite"/>
+                        </rect>
+                    </svg>
+                </div>
+                <div class="brand-name">3D ENTERTAINMENT</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#genres">GENRES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>TURN UP THE VOLUME</h1>
+        <p>Premier DJs & MCs | Reggae • Roots • Afrobeats • Bongo</p>
+        <button class="cta-button">BOOK US NOW</button>
+    </section>
+
+    <section class="services" id="services">
+        <h2>OUR SERVICES</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">🎧</div>
+                <h3>Professional DJs</h3>
+                <p>Experience world-class DJs who know how to keep the energy high and the crowd moving all night long.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎤</div>
+                <h3>Dynamic MCs</h3>
+                <p>Our talented MCs bring the hype and keep your event flowing with professional hosting and crowd engagement.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔊</div>
+                <h3>Premium Sound</h3>
+                <p>Top-tier sound equipment delivering crystal clear audio for events of any size, from intimate gatherings to large venues.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎉</div>
+                <h3>Event Planning</h3>
+                <p>Full entertainment coordination for weddings, corporate events, parties, and festivals across Kenya.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="genres" id="genres">
+        <h2>MUSIC GENRES WE SPECIALIZE IN</h2>
+        <div class="genre-tags">
+            <div class="genre-tag">🎵 REGGAE</div>
+            <div class="genre-tag">🌿 ROOTS</div>
+            <div class="genre-tag">🔥 AFROBEATS</div>
+            <div class="genre-tag">🥁 BONGO</div>
+            <div class="genre-tag">🎶 LOCAL HITS</div>
+            <div class="genre-tag">💃 DANCEHALL</div>
+            <div class="genre-tag">🌍 KENYAN MUSIC</div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="contact-info">
+            <h2 style="color: #ff8c00; margin-bottom: 20px;">GET IN TOUCH</h2>
+            <p>📞 Phone: +254 XXX XXX XXX</p>
+            <p>📧 Email: info@3dentertainment.co.ke</p>
+            <p>📍 Location: Nairobi, Kenya</p>
+        </div>
+        <div class="social-links">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Instagram">📸</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="WhatsApp">💬</a>
+        </div>
+        <p style="margin-top: 30px; color: #888;">&copy; 2025 3D Entertainment. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
